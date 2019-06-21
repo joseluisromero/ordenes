@@ -20,7 +20,5 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    apply plugin: 'java'
-    apply plugin: 'java'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    
 }
