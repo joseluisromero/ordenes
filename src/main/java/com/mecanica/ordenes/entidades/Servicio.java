@@ -50,8 +50,8 @@ public class Servicio implements Serializable {
     private BigDecimal srvPrecio;
     @Column(name = "srv_estado")
     private Short srvEstado;
-    @OneToMany(mappedBy = "srvId", fetch = FetchType.LAZY)
-    private List<DetalleServicio> detalleServicioList;
+//    @OneToMany(mappedBy = "srvId", fetch = FetchType.LAZY)
+//    private List<DetalleServicio> detalleServicioList;
 
     public Servicio() {
     }
@@ -108,13 +108,13 @@ public class Servicio implements Serializable {
         this.srvEstado = srvEstado;
     }
 
-    public List<DetalleServicio> getDetalleServicioList() {
-        return detalleServicioList;
-    }
-
-    public void setDetalleServicioList(List<DetalleServicio> detalleServicioList) {
-        this.detalleServicioList = detalleServicioList;
-    }
+//    public List<DetalleServicio> getDetalleServicioList() {
+//        return detalleServicioList;
+//    }
+//
+//    public void setDetalleServicioList(List<DetalleServicio> detalleServicioList) {
+//        this.detalleServicioList = detalleServicioList;
+//    }
 
     @Override
     public int hashCode() {

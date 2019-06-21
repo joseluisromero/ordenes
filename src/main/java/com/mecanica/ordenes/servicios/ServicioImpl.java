@@ -21,4 +21,15 @@ public class ServicioImpl implements IServicio {
     public void crearAndActualizar(Servicio servicio) {
         servicioRepositorio.save(servicio);
     }
+
+    @Override
+    public Servicio buscarServicioId(Integer id) {
+        return servicioRepositorio.getOne(id);
+    }
+
+    @Override
+    public void eliminarServicio(Servicio servicio) {
+        servicioRepositorio.delete(servicio);
+
+    }
 }
