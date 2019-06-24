@@ -9,7 +9,7 @@ public class OrdenesApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(OrdenesApplication.class, args);
-        System.out.printf("Hola modificacion subida");
+        System.out.printf("Corriendo Servidor.....");
     }
 
 }

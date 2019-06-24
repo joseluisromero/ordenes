@@ -5,6 +5,8 @@
  */
 package com.mecanica.ordenes.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,8 +30,8 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "servicio")
-@NamedQueries({
-    @NamedQuery(name = "Servicio.findAll", query = "SELECT s FROM Servicio s")})
+@XmlRootElement
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Servicio implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +53,8 @@ public class Servicio implements Serializable {
     private BigDecimal srvPrecio;
     @Column(name = "srv_estado")
     private Short srvEstado;
-//    @OneToMany(mappedBy = "srvId", fetch = FetchType.LAZY)
-//    private List<DetalleServicio> detalleServicioList;
+    @OneToMany(mappedBy = "srvId", fetch = FetchType.LAZY)
+    private List<DetalleServicio> detalleServicioList;
 
     public Servicio() {
     }
@@ -115,6 +118,7 @@ public class Servicio implements Serializable {
 //    public void setDetalleServicioList(List<DetalleServicio> detalleServicioList) {
 //        this.detalleServicioList = detalleServicioList;
 //    }
+
 
     @Override
     public int hashCode() {

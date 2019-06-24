@@ -3,6 +3,7 @@ package com.mecanica.ordenes.Controller;
 import com.mecanica.ordenes.entidades.Servicio;
 import com.mecanica.ordenes.interfaces.IServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -14,8 +15,8 @@ public class ServicioController {
     @Autowired
     IServicio iServicio;
 
-    @RequestMapping(value = "/listar",method = RequestMethod.GET )
-    public List<Servicio> getAllUsers() {
+    @RequestMapping(value = "/listar",method = RequestMethod.GET ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Servicio> listarServicios() {
         return iServicio.listar();
     }
 
@@ -31,11 +32,15 @@ public class ServicioController {
         iServicio.crearAndActualizar(servicio);
     }
 
-    @RequestMapping(value="/buscar", method= RequestMethod.GET)
-    public Servicio buscarServicio(@RequestParam(name="id", required=false) Integer id){
-
-        return iServicio.buscarServicioId(1);
+    @GetMapping(value="/buscar/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public Servicio buscarServicio(@PathVariable ("id") Integer id){
+        System.out.println("campo a buscar"+id);
+        Servicio serv=new Servicio();
+        serv=iServicio.buscarServicioId(id);
+        System.out.println("serviciobuscado "+serv.getSrvNombre());
+        return iServicio.buscarServicioId(id);
     }
+
 
     @RequestMapping(value="/eliminar/{id}", method= RequestMethod.DELETE)
     public void eliminarServicio(@PathVariable Integer id){
