@@ -32,7 +32,7 @@ public class ServicioController {
         iServicio.crearAndActualizar(servicio);
     }
 
-    @GetMapping(value="/buscar/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/buscar/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public Servicio buscarServicio(@PathVariable ("id") Integer id){
         System.out.println("campo a buscar"+id);
         Servicio serv=new Servicio();
